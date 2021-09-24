@@ -1,0 +1,59 @@
+1.What is mean by spring framework
+-
+The Spring Framework (Spring) is an open-source application framework that provides infrastructure support for developing Java applications. 
+One of the most popular Java Enterprise Edition (Java EE) frameworks, Spring helps developers create high performing applications using plain old Java objects (POJOs).
+
+2.what is mean by IOC and loosly coupled?
+3.Difference between ApplicationContext and BeanFactory?
+4.What is mean by Autowired? Explain Types?
+5.Explain Spring Bean life Cycle?
+6.What is mean by Singleton how can we make singleton class?
+7.Types of Spring Bean Scopes?
+
+8.Spring MVC Workflow?
+9.Spring Annotations?
+10.What is mean by @Qulifier?Example?
+11.Spring XML based Configuration?EX:database,View Resolver
+12.@Post vs @PUT vs ---------
+13.HTTP StatusCodes ex:400,503--------
+14.What are the features of Spring Framework?
+15.What do you mean by IoC (Inversion of Control) Container?
+16.What do you understand by Dependency Injection?
+17.Explain the difference between constructor and setter injection?
+18.What are Spring Beans?
+19.How is the configuration meta data provided to the spring container?
+20.Explain Bean life cycle in Spring Bean Factory Container.
+21.What is autowiring and name the different modes of it?
+22.List the advantages of Spring Framework.
+23.What are the different features of Spring Framework?
+24.What are the different components of a Spring application?
+
+
+
+
+--------------------Hibernate----------------
+1.What is ORM?
+2.What is Session and SessionFactory?
+3.What is First-level cache and Secondlevel cache?
+4.difference between get() and load()?
+5.What is mean by Lezzy loading and dirty checking?
+6.What is Transaction Management?
+7.Difference between Merge() and Update()?
+8.What about hibernate Mapping configuration file?
+9.Can you tell the difference between getCurrentSession and openSession methods?
+10.What are some of the important interfaces of Hibernate framework?
+11.How do you create an immutable class in hibernate?
+12.Mention some of the advantages of using ORM over JDBC?
+13.Is Session a thread-safe object?
+14.What are the states of the object in hibernate?
+15.What is HQL (Hibernate Query Language)?
+16.Differentiate between save() and saveOrUpdate() methods in hibernate session.
+17.What is criteria API in hibernate?
+18.What is HQL?
+19.What is hibernate caching?
+20.What are the states of a persistent entity?
+21.What are the core interfaces of Hibernate?
+22.What is the difference between session.save() and session.persist() method?
+23. Is Session a thread-safe object?
+24.How to make an immutable class in hibernate?
+25.

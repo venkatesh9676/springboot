@@ -1,0 +1,613 @@
+oops 
+==============
+--> Has A vs IS A
+--> method overlaoding vs method overriding
+-->interface vs abstraction 
+--> composition vs Aggrigation
+--> final ,static keywords
+
+Strings
+===============
+explain immutability future and what are immutability class in java
+how can we create our own custom immutablitiy class
+diff b/w string ,string buffer and stringbuilder
+
+exception handling
+=====================
+--> heirarachy of exceptions and know some exceptions types with difference
+--> try with resource
+--> multi catch block cenario based questions
+--> diff b/w class not found and nodeffounderror 
+
+why static methods cannot be overriden?
+========================================
+static methods can be accessed without creating the objects for the class at the compile time itself whereas in method overiding
+the subclass have the same method signature as that of the base class. its execution is decided at runtime.
+so, static methods deals with class not with objects but for method overiding the method call is based on the objects.
+
+Ex: if both the base class(display) and the subclass(display meesage) having the same method called hello.
+	display d = new display()
+	d.hello()//base class method will be called
+	display d = new displaymessage()
+	d.hello()//base class method is executed but expected should be subclass method
+	displaymessage d = new displaymessage()
+	d.hello()//subclass method will be called
+
+if base and subclass having same static method signature, it is called method hiding not method overriding.
+
+
+If we change the main method signature, the program will compiles but not executes.
+
+Can we overload main method?
+============================
+Yes, we can overload the main method. the program will compile and execute. JVM will search for the required main method signature
+and calls it.
+Ex:
+public class OverloadTestMain {
+    public static void main(String[] args) {
+        System.out.println("Inside main(String[] args)");
+    }
+    public static void main(Integer arg1) {
+        System.out.println("Inside main(Integer arg1)");
+    }
+ 
+    public static void main(Integer[] arr) {
+        System.out.println("Inside main(Integer array)");
+    }
+}	
+o/p: Inside main(String[] args)
+
+If we want to call those two methods apart from main method, we can do this by below process.
+EX:
+public class OverloadTestMain {
+    public static void main(String[] args) {
+        System.out.println("Inside main(String[] args)");
+        main(2);
+        main(new Integer[] {1,2,3});
+    }
+ 
+    public static void main(Integer args) {
+        System.out.println("Inside main(Integer args)");
+    } 
+ 
+    public static void main(Integer[] arr) {
+        System.out.println("Inside main(Integer arr)");
+    }
+}
+o/p: Inside main(String[] args)
+     Inside main(Integer args)
+     Inside main(Integer arr)
+
+Can we have abstract class without having any abstract method in it?
+====================================================================
+Yes, you can have abstract class without having any abstract method.
+
+What is the point of creating abstract class without having any abstract methods in it?
+=======================================================================================
+If we create abstract class but with no abstract methods, we still can do that. If we create class as abstract we cannot 
+instantiate the class. so, if we want to prevent the class from being instantiated , we can declare the class as abstract.
+
+
+Have you heard about transient variable? When will you use it?
+==============================================================
+Transient variables are used Serialization. If you don’t want to make variable serializable, you can make it transient variable.\
+
+Lets say you have Country class and you don’t want to Serialize population attribute as it will change with time, so you can 
+declare population attribute as transient and it won’t serialized any more.
+
+Can you call start method twice in java?
+========================================
+No, we cannot call start method twice, if we do it will raise IllegalThreadstate exception.
+We can start the thread only once at the time of creating the thread.
+
+Do you know why String is immutable in java?
+============================================
+Whenever we store a string value with double quotes, it will go and store it in area called String literal pool.
+In that pool, one value is referenced by many reference variables. so, if string is mutable, it will affect all the variables present in the pool.
+Also, there will security issues if string is mutable. for example if we declare username, password as strings while connecting to database
+there will be a chance for hackers to change the values of those strings if string is mutable.
+
+Do you know how to make a class immutable? Can you provide steps for it?
+========================================================================
+By making the class as final 
+By making the variables as private final
+dont use setter methods 
+get the cloned object from the getter methods instead of getting the original object so that it can be prevented from changing.
+need to do deep copy incase of imutable objects while writing the constructor.
+
+Can we have static method in the interface?
+===========================================
+Yes, we can have static methods in the interface.
+Suppose if your interface is having only one method and that method can be implementing by the class which implements this interface
+but if we add new method to the interface, then all the classes which are implementing this interface will break. In order to avoid this
+we can declare default method with some default implementation, so there will be no changes in the classes implementing this interface.
+If we want to use this default method in our classes, we can simply overide these default methods.
+
+what about Multiple inheritance with this approach?
+---------------------------------------------------
+If two interfaces having the same default methods with default implementation, then consider the class implementing these two interfaces at a time
+then there will be ambiguity (which interface method to call), so there will be comiplation error.
+To solve this compilation error, we can overide that default method.
+Ex:
+public interface Decorable {
+    default void decorateWithPaints()
+    {
+       System.out.println("Decorate using paints");
+    }
+   }
+ 
+public interface Paintable
+{
+    default void decorateWithPaints()
+    {        
+        System.out.println("Decorate using paints");  
+    }
+}
+public class Room implements Decorable,Paintable{
+ 
+    public void decorateWithPaints()
+    {       
+        System.out.println("Decorate using paints");  
+  }
+}
+
+Can you declare constructor as final?
+=====================================
+No, you cannot.
+
+What is the difference between StringBuffer and StringBuilder?
+==============================================================
+String buffer is thread safe, so two threads cannot call the string buffer method at a time. It is less performance efficient 
+because it is thread safe.
+String builder is not thread safe, so two threads can call the string builder method simultenously. It is more performance efficient.
+
+What is Java ClassPath?
+=======================
+Classpath is an environment variable which is used by JVM to locate all the classes used by the program
+
+You have a list of Custom objects? How can you sort them?
+==========================================================
+You can use comparable or comparator to sort the list of custom objects.
+Comparator:
+==========
+We can use comparator to sort the custom list, we want to overide compare method.We can create another class and implement the comparator interface
+for that class and overide the compare method.
+original class cannot be modified because we write another class and the class will implement the comparator interface.
+java.util package.
+multiple sorting sequence
+Collections.sort(List, Comaparator)
+
+
+Comparable:
+==========
+we can implement the comparable interface for the class whose objects can be sorted(pojo).
+original class itself should be modified, same class should implement comparable interface.
+java.lang.package
+single sorting sequence
+Collections.sort(List)
+
+
+
+What is volatile in java?
+==========================
+If you mark any variable as volatile, then this variable will use main memory rather than CPU cache.
+so every thread will have an updated value of the variable.
+
+What are two different ways to call garbage collector?
+======================================================
+System.gc() and Runtime.getRuntime().gc()
+
+What is marker interface in java?
+=================================
+Marker interface in java is the interface having no methods in it.
+Ex: Serializable and Cloneable
+
+Can you differentiate between Checked Exception and Unchecked exception?
+=========================================================================
+Checked exceptions are those which can be checked at the time of compilation itself. These exceptions can be catched
+using try catch block or using throws keyword.
+
+Unchecked exceptions are those which cannot be checked at the comipilation time. Java can't complain even if you dont handle those 
+exceptions but we get exceptions at the runtime.
+
+What is Exception?
+===================
+Exception is unwanted situation or condition while execution of the program. If you do not handle exception correctly, 
+it may cause program to terminate abnormally.
+
+What is the difference between ArrayList and LinkedList? How will you decide which one you need to use?
+=======================================================================================================
+Arraylist uses the dynamic array to store the elements.
+manipulating of array is low because all the bits have to shift
+it is used for storing and accessing the elements.
+arraylist can act only as a list because it implemets only the list interface.
+
+Linked list uses the doubly linked list to store the elements.
+manipulating of array is fast
+it is mainly used for manipulating the data.
+it can be acted as list and also queue bcz it implements both the list and deque interfaces.
+
+What is difference between wait and sleep in java?
+=================================================
+major difference between them is wait releases the lock while waiting whereas sleep wont release its lock.
+wit is for inter-thread communication whereas sleep is just for pause of execution 
+
+You have started three threads from main threads.You need to make sure main thread complete at last. How will you do it?
+=====================================================================================================================
+we can use join() method to acheive this scenerio.
+Ex:without using join()
+class MyRunnable implements Runnable{
+ 
+    @Override
+    public void run() {
+        System.out.println(Thread.currentThread().getName() +" in run method");
+    }
+    public static void main(String[] args) {
+        MyRunnable runnable=new MyRunnable();
+        Thread t1=new Thread(runnable,"T1");
+        Thread t2=new Thread(runnable,"T2");
+        Thread t3=new Thread(runnable,"T3");
+ 
+        t1.start();
+        t2.start();
+        t3.start();
+ 
+        System.out.println("Main thread ends here");
+ 
+    }
+}
+o/p:Main thread ends here
+T2 in run method
+T1 in run method
+T3 in run method
+
+with join()
+-----------
+class MyRunnable implements Runnable{
+ 
+    @Override
+    public void run() {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println(Thread.currentThread().getName() +" in run method");
+    }
+    public static void main(String[] args) {
+        MyRunnable runnable=new MyRunnable();
+        Thread t1=new Thread(runnable,"T1");
+        Thread t2=new Thread(runnable,"T2");
+        Thread t3=new Thread(runnable,"T3");
+ 
+        t1.start();
+        t2.start();
+        t3.start();
+        try {
+            t1.join();
+            t2.join();
+            t3.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+ 
+        System.out.println("Main thread ends here");
+ 
+    }
+o/p:
+T2 in run method
+T3 in run method
+T1 in run method
+Main thread ends here
+
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+What is Serialization?
+=======================
+Serialization is the process of persisting the java objects in the form of ordered or sequence of bytes. these bytes will have the
+data of the objects as well as the type of objects. If we want to read the serialized objects , we need to perform deserialization.
+ObjectInputStream(writeObject) and ObjectOutputStream(readObject) are the methods used for serialization purpose. 
+
+What is the need for serialization?
+===================================
+If we want to transmit the data(java objects) over a network then serialization technique is used.Network infrastructure and your Hard disk 
+is hardware components that understand bits and bytes but not Java objects.So in order to convert the java objects into bits or bytes this 
+process is used.
+
+Can you Serialize static variables?
+===================================
+No, we cannot serialize the static variables because static variables are at class level but we serialize the objects not the class.
+so, it is not possible.
+
+Can you explain about Concept of serialVersionUID?
+==================================================
+serialVersionUID is the varibale which should be declared when we implement the serializable interface. This UID should be same for the 
+serializable class as well as deseriazable class. if that UID doesnt match then the program will throw an error.
+serialVersionUID is used for version control of object.
+This UID is static final.Normally we cannot serialize the static variables but How this UID is serialized?
+There is an exception for this UID.
+
+How can you avoid certain member variable of class to be serialized?
+=====================================================================
+By defining them either as static or transient
+
+What  if superclass is Serializable?  Does that mean child class is automatically Serializable?
+===============================================================================================
+Yes
+
+What if superclass is Serializable but you don’t want subclass to be Serializable?
+==================================================================================
+If you don’t want subclass to serializable then you need to implement writeObject() and readObject() 
+method and need to throw NotSerializableException from this methods
+
+What is externalizable interface?
+==================================
+If we want to externalize the serialization process then we can use this.
+It uses custom written mechanism for marshalling and unmarshalling of objects.
+this interface extends serializable interface, we need to implement two methods writeExternal and readExternal.
+It has full control over serialization process compare to serializable interface. 
+This is not the marker interface because it has two methods to be implemented.
+
+
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+What is method overloading?
+===========================
+If two or more methods having the same name but different arguments then that is method overloading.
+Ex: array sort function
+
+same name
+diff number of arguments
+diff data type of arguments
+diff return type (but either number of argument or data type of argument should also be changed)
+order of arg can also be diff (but only if we have diff data types of arg)
+Constructor can be overloaded
+
+Can we overload static methods in java?
+=======================================
+Yes, we can overload them but not overide
+
+
+Can we change only return type while method overloading?
+=========================================================
+No you cannot change only return type because there will be ambiguity for the compiler to call if both the methods have same return type.
+
+What is method overriding?
+==========================
+If subclass having the same method signature as the parent or base class, then it is called method overriding.
+
+same name
+same num of arguments
+same type of arguments
+same order 
+same return type -Can’t change except for covariant (subtype) returns
+access modifier -Must not be more restrictive. Can be less restrictive.
+Constructor cannot be overriden
+Static and final methods cannot be overriden
+
+Can you override static methods in java?
+=========================================
+No, we cannot. we can create static method with same name in the child class, it wont give compilation error but it is called method hiding not method
+overriding.
+
+What is static binding?
+=======================
+During compilation, compiler will bind the method to the actual method. Method overloading binding happens at compile time.
+
+What is dynamic binding?
+========================
+Binding of overriden methods can be done at runtime.
+
+What are Covariant return type in java?
+=======================================
+If subclass method overrides any method in the base class, then the return type of this overriding method is the subclass of return type of base class.
+
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+How can you handle exception in java?
+=====================================
+Using try-catch-finally block
+
+Is there any order in which catch block should be written?
+===========================================================
+Yes, the most specific exception should be at first and then the generic ones.
+
+Can we write any statements in between try, catch and finally?
+==============================================================
+No
+
+How can we write custom exceptions?
+====================================
+Extends Exception class.
+For unchecked exceptions--> extends RuntimeException class
+
+Difference between throw and throws in java?
+============================================
+throw is a keyword used to handle the custom exceptions or predefined exceptions.
+throws is a keyword used to declare the list of exceptions that the method might throw.
+
+
+what is the use of constructor in abstract class?
+=================================================
+Runtime env can create objects for ur abstract class.
+
+what is synchronization?
+========================
+Multiple threads trying to access the same resource or the same object at a time. In order to overcome this we will use synchronization
+concept. we can use synchronised keyword to allow the thread to access the object by creating a lock on that particular object.
+
+
+Difference between processes and thread?
+========================================
+Processes are the running instances of your program on the operating systems whereas threads are the one which executes the tasks 
+that are mentioned in the program in the process.
+process will consists of threads.
+
+What is concurrent programming?
+===============================
+If some of the tasks in one thread got stuck due to some reasons then we can split the tasks to different threads 
+to execute the tasks at the specified time. this is known as concurrent programming.
+
+what are wrapper classes?
+=========================
+These are the classes where the primitives are coverted into objects.
+Boxing - Constructing the object
+UnBoxing - Extracting the value from the object.
+Ex:
+int i = 10;
+Integer iRef = new Integer(i)//Boxing
+int j = iRef.intValue();//UnBoxing
+Integer kRef = i;//Auto Boxing
+int l = kRef;//Auto UnBoxing
+
+why java is not 100% object oriented?
+======================================
+beacuse of primitive data types i.e they are not objects.
+
+why pointers are not used in Java?
+==================================
+Pointers are unsafe, they will increase the complexity of the program. Pointers will normally take care of pointing to a memory
+and allocating the memory whereas in Java JVM will takes care of these thingsv and also it avoid the direct access to users. 
+so there is no need for pointers in Java.
+
+what is JIT Compiler in Java?
+==============================
+JDK is having javac.exe which will convert your Java source code into the byte code. This byte code should be converted into
+machine understandable, for this, the interpreter is used normally. interpreter will go line by line and then converts it into machine 
+code but this takes more time and also performnace will be reduced. for this purpose JIT Compiler is used, it will converts the entire code 
+into machine codes within less time and performnace will also get better through this.
+
+
+what is singleton class in Java and how can we make a class singleton?
+======================================================================
+It is a design pattern where only one instance is created at a given time, in one JVM.
+
+We can make a class singleton by:
+making the constructor as private
+creating the static instance with the type same as that of class.
+creating a static method i.e. getInstance(), in that return the same instance if it is not null or else create a new instance.
+
+Ex:
+public class Animal{
+	private static Animal single_instance = null;
+	private Animal(){
+	}
+	public static Animal getInstance(){
+		if(single_instance == null)
+			single_instance = new Animal(); 
+		return single_instance;
+	}
+}	
+
+How can we make a class as immutable?
+=====================================
+by making the class as final
+by making the variables as private
+by making the variables as final so that the variables cannot be reassigned
+by returning the copy of the object through getter methods rather than returning the original object.
+dont provide setter methods
+initialize all the fields with the constructor performing the deep copy.
+
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+Collections:
+------------
+
+Collection-->interface (Map doesnt extend the Collection interface)
+List,Set -->interface
+ArrayList, LinkedList, Vector, HashSet, LinkedHashSet, -->class
+
+Difference between fail-fast and fail-safe iterators?
+=====================================================
+fail-fast iterator will throw an Concurrent modification exception immediately whenever they encounter that one thread is modifying the Collection
+object while other thread is iterating over that object.
+
+fail-safe interator doesnt throw any exception even if collection is modified structurally when other thread is iterating over it because they work 
+on clone of Collection instead of working on original Collection.
+
+
+Difference between synchronized Collection and Concurrent Collection?
+=====================================================================
+In Synchronized Collection, if one thread is performing one segment in the entire collection, all other threads will remain calm
+until the thread1 will completed its task.
+
+Whereas in concurrent collection, threads will perform their tasks concurrently without having to wait for other threads to complete their own tasks.
+
+
+Difference between first level and second level cache in hibernate?
+===================================================================
+first level cache:
+associated with session
+by default enabled
+we cannot disable it
+if session is closed, the entire content will be lost.
+it is only for the current session who are using it.
+
+Second level cache:
+associated with sessionfactory
+we have enable it programatically
+we can disable it
+even if the session is closed, we can access data because it is for entire application.
+
+is JAVA passbyvalue or passbyreference?
+=======================================
+java is passbyvalue, passing the copy of original object, so that there will be no effect in the orginal object even if we perform any modification
+on the new one, the original one will not get affected.
+ex:
+public class PassByValue {
+
+	int eyes;
+	
+	public static void main(String[] args) {
+		
+		PassByValue pass = new PassByValue();
+		pass.eyes =2;
+		copyMethod(pass);
+		System.out.println(pass.eyes);
+		
+	}
+	public static void copyMethod(PassByValue copy){
+		copy.eyes = 12;
+	}
+}
+o/p:12 (behave as passbyreference but not. because we are actually sending the reference to the method, so using that object, we are modifying
+the value, so the value of original object will also get changed)
+above process differ for primitives, even though we did modification using the same varibale, the original one will not get affected.
+
+working of hashmap:
+==================
+hashing is the technique where the object is converted into integer value. this integer value is used for indexing and faster searches.
+It internally uses 2 methods,
+equals()- method of Object class. it compares the equality of 2 objects. it compares the key whether they are equal or not.
+hashcode()-method of Object class.
+
+bucket is normally an array of nodes. nodes will act as an array and linkedlist datastructure.
+it will calcuates the index value into which the object has to be inserted based on the hashcode of the objects.
+
+Hashing collision: if two objects has got the same index into which it has to be inserted, then equals method will compare the keys of
+both, if matches then it replace the already present one, if not it will be stored along with the older one with the help of linkedlist.
+
+
+
+How to create executable jar file in springboot?
+================================================
+1. make sure that we have jar pacakaging and spring-boot-maven-plugin in our pom.xml.
+2. run command mvn clean package
+3. with in the target folder we have 2 jars, one is executable jar and the other is original jar and is not executable
+4. we have to run the executable jar (java executable-jar-name)
+5. tomcat server will be started and we are ready for testing the application.
+
+Right click project then click 'Run As'
+Maven Build
+And you should type 'package' in input area then run.
+/path/your/project/target/ there is your .jar file with dependencies.
+
+How to handle exceptions in springboot?
+=======================================
+Code will be complex when we use try catch blocks in all the classes. so instead of using try catch blocks everywhere we can use annotations
+@ControllerAdvice -Any class annotated with @ControllerAdvice will become a controller-advice class which will be responsible for handling exceptions.
+@ControllerAdvice(annotations = RestController.class) - it will catch all the exceptions which are thrown by @RestController annotation classes
+@ControllerAdvice(basePackages = "org.example.controllers") - it will scan only the corresponding base package classes
+@ControllerAdvice(assignableTypes = {ControllerInterface.class, AbstractController.class})
+
+
