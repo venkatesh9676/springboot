@@ -1,0 +1,210 @@
+What is React?
+   . React is javascript library for building fast and interactive user interfaces for the web as well as mobile applications
+   . It is open source reusable component-based front-end library
+   . In a model view controller architecture,React is the 'View' which is responsible for how the app looks and feels
+
+Why React?
+   . Easy creation of dynamic web applications
+   . performance enhancement
+   . Reusable components
+   . Undirectional data flow
+   . small learning curve
+   . can be used for mobile apps
+
+Feature of React?
+   . JS + HTML = JSX 
+   . DOM(document object model) treats an XML or HTML document as a tree structure
+
+Components,State and Props
+   . coomponnents
+      . Components are the building blocks of any React application and a single app usually consists of multiple componenets
+      . A components is essentially a piece of the user interface it is like a function that returns HTML elements
+      . It splits the user interface into independent, reusable pieces tha can be processed separately
+      . A component is implemented as a Javascript class having some state and a render method
+   . State
+      . State is the data that we want the component to render
+      . State of a component is an object that holds some data
+      . this data influences the output of a component
+   . Props 
+      . Props is short for properties, that allow us to pass arguments or data to components
+      . Props are passed to components in the way similar to that of HTML-tag attributes
+
+React installation
+    . npm install -g create-react-app
+    . create-react-app --version
+    . create-react-app myapp (this is for react project creation)
+    . npm init react-app music-app (this also project creation command)
+    . npx create-react-app (project name)
+
+Types of Components
+    . Stateless Functional Components
+    . Stateful Class Component
+
+Nesting Components
+    . Components have to be nested into the main component using import and export keywords
+
+Higher order & Pure components 
+    . A higher-order components is a function that takes acompponents and returns a new component.
+      it facilitates reusing of component logic
+      const NewComponent = higherOrderComponent(originalComponent)
+ . pure Components
+    . React.Component is the base class for React components. React.PureComponent is a variation of React.Component class 
+      and does a shallow comparison of props and state
+    . A react commponent can be considered pure if it renders the same output for the same state and props
+
+ReactJs Props
+   . props, short for properties, allow the user to pass arguments or data to components
+   . Properties help make components more dynamic
+   . Props are passed to components in the way similar to that of HTML-tag attributes
+   . Props in a components are read-only and cannot be changed.
+
+What is State
+   . A state is an object that stores the values of properties belonging to a component that cloud change over a period of time
+       . A state can be modified based on the user action or network changes
+       . Every time the state of an object changes react re-renders the component to the browser
+       . The state object is initialized in the constructor
+       . The state object can store multiple properties
+       . this.setState() is used to change the value of the state object
+       . setState() function performs a shallow merge between the new and the previous state
+    .setState()--> State can be updated in response to event handlers, serer responses or prop changes. 
+     This is done using setState method
+
+Data binding
+       . Data binding is a process that allows an internet user to manipulate web pages elements using a web browser
+       . It is used in web pages that contain interactive components such as forms,calculators,tutorials and games 
+           . only one way databinding
+
+
+Hooks
+       . NO breaking changes.
+       . Completely opt-in 100% backwords-compatible
+       . What ever we've learned so far in this series still holds good
+       . Component types-Functional components and class components.
+       . Using state,lifecycle methods  and it's binding
+       . After understanding state, event binding and lifecycle hooks in class components
+
+JSX
+       . JavaScript XML(JSX) - Extension to the JavaScript language syntax.
+       . Write XML-like code for elements and components
+       . JAX tags have a  tag name, attributes, and children.
+       . JAX is a not a necessity to write React application
+       . JAX makes your react code simpler and elegant.
+       . JAX ultimately transpiles to pure JavaScript which is understood by the browsers
+
+
+JSX differences
+       . Class -> className
+       . for -> htmlFor
+       . camelCase property naming convention
+            . onclick ->onClick
+            . tabindex ->tabIndex
+
+  
+props
+    props get passed to the component
+    function parameters
+    props are immutable 
+    props->Functional Components
+    this.props->Class Components
+
+state
+    state is managed within the component
+    Variables declared in the function body
+    state can be changed
+    useState Hook ->Functional Components
+    this.state ->Class Components
+
+setState
+      . Always make use of setState and never modify the state directly
+      . Code has to be executed after the state has been updated? place that code in the call back function which is the
+        second argument to the setState method.
+      . When you have to update state based on the previous state value, pass in a function as an argument instead 
+        of the regular object
+
+Lists and Keys
+      . A "key" is a special string attribute you need to include when creating lists of elements.
+      . Keys give the elements a stable identity.
+      . Keys help React identity which items have changed, are added, or are removed.
+      . Help in efficient update of the user interface.
+
+
+Index as key
+    . When to use index as a key?
+      1. The items in your list do not have a unique id.
+      2. The list is a static list and will not change.
+      3. The list will never be reordered or filtered.
+
+
+Lifecycle Methods
+
+  . Mounting
+     . When an instance of a component is being created and inserted into the DOM
+        . constructor,static getDerivedStateFromProps, render and componentDidMount
+  . Updating
+     . When a component is being re-rendered as a result of changes to either its props or state
+        . static getDerivedStateFromProps, shouldComponentUpdate, render, getSnapshotforeUpdate and componentDidUpdate
+  . Unmounting
+     . When a component is being removed from the DOM
+        . componentWillUnmount
+  . Error Handling
+     . When there is an error during rendering,in a lifecycle method, or in the constructor of any child component
+        . static getDerivedStateFromError and componentDidCatch
+
+
+Regular Component
+     . A regular component does not implement the shouldComponentUpdate method. it always returns true by default
+
+Pure Component              *************Doubt**************************
+     . A pure component on the other hand implement shouldComponentUpdate with a shallow props and state comparison
+          
+
+
+shallow comparison (SC)      ************doubt************
+   . Primitive Types
+      . a (SC) b returns true if a and b have the same value and are of the same type
+          . Ex: String 'Viswa'(SC) String 'Viswa' returns true
+
+   . Complex Types
+       . a (SC) b returns true if a and b reference the exact same object
+
+                 var a = [1,2,3];
+                 var b = [1,2,3];
+                 var c = a;
+
+                 var ab_eq = (a === b ); //false
+                 var ac_eq = (a === c ); //true
+
+Summary
+       . we can create a component by extending the pure component class.
+       . A pure component implements the shouldComponentUpdate lifecycle method by performing a shallow 
+         comparison on the props and state of the component
+       . If there is no difference, the component is not re-rendered-performance boost.
+       . It is a good idea to ensure that all the children components are also pure to avoid unexpected behaviour
+       . Never mutate the state.Always return a new object that object reflects the new state.
+
+
+Refs
+     . The ref is used to return a reference to the element. Refs should be avoided in most cases, however, 
+       they can be useful when we need DOM measurements or to add methods to the components.
+         . Once the button is clicked, the input will be cleared and focused.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,67 @@
+What is React?
+.React is a one of the most popular JavaScript libraries that is used to develop interactive user interfaces
+
+Features of React
+--------------------
+.JSX   -- JSX makes it simple and easy to create applications.
+.Virtual DOM
+.Testability
+.Server-Side rendering
+.One-Way Data Binding(DOM --> Component)
+
+Important Concepts
+---------------------
+Components: In React everything is a component.Different component are used to make up a single application.
+State and Props: 
+State: 
+.State are the source of data
+.They determine the object behaviours
+.Can have lifecycles
+Props:
+.Props are read-only components
+.They are passed from parent to child
+.Help maitain unidirectional data flow
+
+Keys:
+.Keys are provide identity to components
+.They help us distinguish between elements
+.Serve to keep tract of items
+
+Debugging:
+.React uses compile time debugging to detects errors.This ensures that errors don't silently turn up at run-time.
+ Facebook's unidirectional data flow allows clean and smooth debugging. fewer stack traces.
+
+Event Handling:
+.Event handlers are used to manage events such as mouse clicks.hovers.etc.
+
+
+Aspects of ReactJS
+--------------------
+.Virtual DOM
+.Data Binding         --> ReactJS follows unidirectional data flow or one way data binding
+                          Throughout the application the data flows in a single direction which gives you better control over it
+.ServerSide Rendering --> Server-Side rendering allows to pre-render the initial state of your react components at the server side only
+
+
+Advantages of ReactJS
+---------------------------
+.Application performance is increased
+.Used on client as well as Server Side
+.Readability is Improved
+.Easily used with other frameworks
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
