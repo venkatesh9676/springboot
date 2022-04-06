@@ -1,0 +1,103 @@
+public class Test {
+	public static void foo() {
+		System.out.println("Test.foo() called ");
+	}
+	public static void foo(int a) {
+		System.out.println("Test.foo(int) called ");
+	}
+	public static void main(String args[])
+	{
+		Test.foo();
+		Test.foo(10);
+	}
+}
+o/p--
+Test.foo() called Test.foo(int) called 
+
+------------------------------
+
+public class Test {
+	public static void foo() {
+		System.out.println("Test.foo() called ");
+	}
+	public void foo() {
+		System.out.println("Test.foo(int) called ");
+	}
+	public static void main(String args[]) {
+		Test.foo();
+	}
+}
+
+o/p---
+method foo() is already defined in class Test
+public void foo() {
+	            ^
+-----------------------------------------
+
+import java.io.*;
+
+class SuperClass {
+
+
+void method() {
+	System.out.println("SuperClass");
+}
+}
+
+
+public class SubClass extends SuperClass {
+
+
+void method() throws IOException {
+
+	
+
+	System.out.println("SubClass");
+}
+
+
+public static void main(String args[]) {
+	SuperClass s = new SubClass();
+	s.method();
+}
+}
+
+
+o/p--
+void method() throws IOException {
+     ^
+  overridden method does not throw IOException
+-------------------------------------------
+
+import java.io.*;
+
+class SuperClass {
+
+	
+	void method()
+	{
+		System.out.println("SuperClass");
+	}
+}
+
+
+public class SubClass extends SuperClass {
+
+	
+	void method() throws ArithmeticException
+	{
+
+		
+		System.out.println("SubClass");
+	}
+
+	
+	public static void main(String args[])
+	{
+		SuperClass s = new SubClass();
+		s.method();
+	}
+}
+
+o/p--
+SubClass

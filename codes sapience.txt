@@ -1,0 +1,104 @@
+/* 
+
+Find the count of all numbers which are less than 100 among a list of Integers.  
+
+*/
+
+Example:
+
+Input: 
+
+ List<Integer> numbers = new ArrayList<Integer>();
+
+ numbers.add(120); 
+
+ numbers.add(20);
+
+ numbers.add(300);
+
+ numbers.add(5);
+ 
+
+Analysis:
+
+Numbers less than 100 are:  20, 5
+
+Output: 1 + 1 = 2
+ 
+
+class Utility{
+
+ public int getCountOfSpecials(List<Integer> numbers){
+
+ int count = 0;
+for(int i =0;i<100;i++) {
+    if(numbers[i] < mean)
+        count++;
+}
+System.out.println("numbers less than mean " + count);
+
+}
+
+}
+
+
+Implement the following methods:
+	
+
+ 
+
+class Utility{
+
+ List<Integer> getList(int[] units){
+
+ List<Integer> numbers = new ArrayList<Integer>();
+      numbers.add(200);
+      numbers.add(300);
+      numbers.add(400);
+      numbers.add(600);
+
+ 
+
+} 
+ 
+
+ Set<Integer> getSet(int[] units){
+
+Set<String> set1 = new Set<String>();
+set1.add("abc");
+set1.add("xyz");
+ set1.add("asd");
+
+} 
+ 
+
+ Map<String, Long> getMap(String[] cities, long[] areas){
+
+           Map<Integer,String> map= new HashMap<Integer,String>();
+map.put(hyd,"Telangana");
+map.put(Vizag,"AP");
+map.put(BGLR,"KA");
+
+} 
+
+
+void display(List<Integer> list ){
+
+System.out.println(numbers);
+
+}
+
+void display(Set<Integer> set ){
+
+/      System.out.println(set1);
+
+}
+
+void display(Map<String, Long>  map ){
+
+//TODO
+
+}
+ 
+
+}
